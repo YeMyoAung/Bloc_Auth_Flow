@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "968468466034",
+    "project_id": "getx-auth-flow",
+    "storage_bucket": "getx-auth-flow.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968468466034:android:1026b2992bb8fda7adb5eb",
+        "android_client_info": {
+          "package_name": "com.beyondlimit_conding.getx_auth_flow.getx_auth_flow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwBogKqdPVywGtdkzQrH3ZqFha9aCcZL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
