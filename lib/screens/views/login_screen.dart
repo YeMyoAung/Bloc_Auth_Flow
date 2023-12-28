@@ -5,6 +5,7 @@ import 'package:getx_auth_flow/controllers/login/login_bloc.dart';
 import 'package:getx_auth_flow/controllers/login/login_event.dart';
 import 'package:getx_auth_flow/controllers/login/login_state.dart';
 import 'package:getx_auth_flow/routes/router.dart';
+import 'package:getx_auth_flow/screens/widgets/error_dialog.dart';
 import 'package:starlight_utils/starlight_utils.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -80,7 +81,7 @@ class LoginScreen extends StatelessWidget {
               ),
               Container(
                 height: 50,
-                margin: const EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 width: context.width,
                 child: ElevatedButton(
                   onPressed: login,
@@ -88,23 +89,9 @@ class LoginScreen extends StatelessWidget {
                     listener: (_, state) {
                       if (state is LoginFailState) {
                         StarlightUtils.dialog(
-                          AlertDialog(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            actionsPadding: const EdgeInsets.only(
-                              bottom: 10,
-                              right: 20,
-                              left: 20,
-                            ),
-                            actions: const [
-                              TextButton(
-                                onPressed: StarlightUtils.pop,
-                                child: Text("Ok"),
-                              )
-                            ],
-                            title: const Text("Failed to login"),
-                            content: Text(state.error),
+                          ErrorDialog(
+                            title: "Failed to login",
+                            message: state.error,
                           ),
                         );
                       }
@@ -120,6 +107,24 @@ class LoginScreen extends StatelessWidget {
                     },
                   ),
                 ),
+              ),
+              TextButton(
+                onPressed: () async {
+                  StarlightUtils.pushNamed(RouteNames.forgetPassword);
+                },
+                child: const Text("Forgot Password?"),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("New user?"),
+                  TextButton(
+                    onPressed: () {
+                      StarlightUtils.pushReplacementNamed(RouteNames.register);
+                    },
+                    child: const Text("Sign Up"),
+                  )
+                ],
               )
             ],
           ),

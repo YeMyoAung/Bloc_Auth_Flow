@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:getx_auth_flow/repositories/AuthService.dart';
 import 'package:getx_auth_flow/routes/router.dart';
 import 'package:starlight_utils/starlight_utils.dart';
 
@@ -14,7 +13,7 @@ Future<void> main() async {
 
   await setup();
 
-  await Injection<AuthService>().signOut();
+  //await Injection<AuthService>().signOut();
 
   runApp(const BlocAuthFlow());
 }
@@ -27,6 +26,11 @@ class BlocAuthFlow extends StatelessWidget {
     return MaterialApp(
       navigatorKey: StarlightUtils.navigatorKey,
       theme: _lightTheme.copyWith(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
+          elevation: 1,
+        ),
         inputDecorationTheme: InputDecorationTheme(
           isDense: true,
           floatingLabelStyle: TextStyle(
@@ -37,6 +41,11 @@ class BlocAuthFlow extends StatelessWidget {
             borderSide: BorderSide(
               color: Colors.blueAccent.shade100,
             ),
+          ),
+        ),
+        textButtonTheme: const TextButtonThemeData(
+          style: ButtonStyle(
+            foregroundColor: MaterialStatePropertyAll(Colors.blue),
           ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -51,6 +60,7 @@ class BlocAuthFlow extends StatelessWidget {
           ),
         ),
       ),
+      initialRoute: RouteNames.home,
       onGenerateRoute: router,
     );
   }

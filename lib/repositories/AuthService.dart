@@ -74,4 +74,11 @@ class AuthService {
       return ResponseModel();
     });
   }
+
+  Future<ResponseModel> sendResetLink(String email) async {
+    return _try(() async {
+      await _auth.sendPasswordResetEmail(email: email);
+      return ResponseModel();
+    });
+  }
 }

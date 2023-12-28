@@ -45,6 +45,7 @@ class LoginBloc extends Bloc<LoginBaseEvent, LoginBaseState> {
 
   @override
   Future<void> close() {
+    print("Close");
     formKey = null;
     isShow.dispose();
     emailController.dispose();
